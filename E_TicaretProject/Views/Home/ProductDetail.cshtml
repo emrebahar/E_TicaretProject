@@ -1,0 +1,120 @@
+﻿@using E_TicaretProject.Entities
+@model Product
+@{ ViewData["Title"] = "ProductDetail"; }
+
+<header class="header">
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="header__top__right">
+                        @if (ViewBag.UserName != null)
+                        {
+                    <div class="header__top__right__auth">
+                        <h5>@ViewBag.UserName</h5>
+                    </div>
+                                    <div class="header__top__right__auth">
+                                        <a href="/Account/Logout"><i class="fa fa-user"></i> Çıkış Yap</a>
+                                    </div> }
+                                else
+                                {
+                    <div class="header__top__right__auth">
+                        <a href="/Account/Login"><i class="fa fa-user"></i> Giriş Yap</a>
+                    </div>}
+                        <div class="header__top__right__auth">
+                            <a href="/Cart/Index?UserName=@ViewBag.UserName"><i class="fa fa-user"></i>Sepete Git</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="header__logo">
+                    <a href="/Home/index"><img src="/Image/iconfinder_social-circle-google-plus_682223.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <nav class="header__menu">
+                    <ul>
+                        <li class="active"><a href="/Home/index">Anasayfa</a></li>
+                        <li><a href="#">Ürünler</a></li>
+                        <li>
+                            <a href="/Template/#">Sayfalar</a>
+
+                        </li>
+
+                        <li><a href="#">İletişim</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+        <div class="humberger__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic" style="border:1px solid">
+                    <div class="product__details__pic__item">
+                        <img class="product__details__pic__item--large"
+                             src="/Image/@ViewBag.ProductDetail.ImageUrl" alt="">
+                    </div>
+                    <div class="product__details__pic__slider owl-carousel">
+                        <img data-imgbigurl="/Image/@ViewBag.ProductDetail.ImageUrl"
+                             src="/Image/@ViewBag.ProductDetail.ImageUrl" alt="">
+                        <img data-imgbigurl="/Image/@ViewBag.ProductDetail.ImageUrl"
+                             src="/Image/@ViewBag.ProductDetail.ImageUrl" alt="">
+                        <img data-imgbigurl="/Image/@ViewBag.ProductDetail.ImageUrl"
+                             src="/Image/@ViewBag.ProductDetail.ImageUrl" alt="">
+                        <img data-imgbigurl="/Image/@ViewBag.ProductDetail.ImageUrl"
+                             src="img/product/details/thumb-4.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            @if (ViewBag.ProductDetail != null)
+            {
+<div class="col-lg-6 col-md-6">
+    <div class="product__details__text">
+        <h3>@ViewBag.ProductDetail.Name</h3>
+        <div class="product__details__rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+            <span>(18 reviews)</span>
+        </div>
+        <div class="product__details__price">@ViewBag.ProductDetail.Price</div>
+        <p>
+            @ViewBag.ProductDetail.Description
+        </p>
+
+        @if (ViewBag.UserName == null)
+        {
+
+                            <a href="/Cart/AddToCart?Id=@ViewBag.ProductDetail.Id&UserName=@ViewBag.UserName" class="btn  btn-success"><i class=" icon-shopping-cart"></i>Sepete ekle</a> }
+                        else
+                        {
+        <a href="/Cart/AddToCart?UserName=@ViewBag.UserName&Id=@ViewBag.ProductDetail.Id" class="btn  btn-success"><i class=" icon-shopping-cart"></i>Sepete ekle</a>}
+
+
+    </div>
+</div>            }
+
+
+
+        </div>
+    </div>
+</section>

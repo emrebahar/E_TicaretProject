@@ -1,0 +1,117 @@
+﻿
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                            @if (ViewBag.UserName != null)
+                            {
+                                <div class="header__top__right__auth">
+                                    <h5>@ViewBag.UserName</h5>
+                                </div>
+                                <div class="header__top__right__auth">
+                                    <a href="/Account/Logout"><i class="fa fa-user"></i> Çıkış Yap</a>
+                                </div>
+
+                            }
+                            else
+                            {
+                                <div class="header__top__right__auth">
+                                    <a href="/Account/Login"><i class="fa fa-user"></i> Giriş Yap</a>
+                                </div>
+                            }
+                            <div class="header__top__right__auth">
+                                <a href="/Cart/Index?UserName=@ViewBag.UserName"><i class="fa fa-user"></i>Sepete Git</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="/Home/index"><img src="/Image/iconfinder_social-circle-google-plus_682223.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="/Home/index">Anasayfa</a></li>
+                            <li><a href="#">Ürünler</a></li>
+                            <li>
+                                <a href="/Template/#">Sayfalar</a>
+
+                            </li>
+
+                            <li><a href="#">İletişim</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+
+
+
+@if (TempData["Info"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Başarılı!</strong> @TempData["Info"].ToString()
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+
+
+<!-- Hero Section End -->
+<!-- Categories Section Begin -->
+<section class="featured spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Ürünler</h2>
+                </div>
+         
+            </div>
+        </div>
+        <div class="row featured__filter">
+
+            @if (ViewBag.ProductList != null)
+            {
+                @foreach (var item in ViewBag.ProductList)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                        <div class="featured__item">
+                            <div class="featured__item__pic set-bg" data-setbg="/Image/@item.ImageUrl" style="border:1px solid">
+
+                                <ul class="featured__item__pic__hover">
+                                    <li><a href="/Cart/AddToCart?UserName=@ViewBag.UserName&Id=@item.Id"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="featured__item__text">
+                                <h6><a href="/Template/#">@item.Name</a></h6>
+                                <h5>@item.Price</h5>
+                                <a href="/Home/ProductDetail?UserId=@ViewBag.UserId&ProductId=@item.Id" class="btn btn-success">Detay</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</section>
+<!-- Featured Section End -->

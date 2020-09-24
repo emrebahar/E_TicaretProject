@@ -1,0 +1,118 @@
+﻿
+@{ ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@model IEnumerable<E_TicaretProject.Entities.Product>
+
+
+@{ double total = 0;
+    if (Model != null && Model.Count()>0)
+    {
+        total = @Model.Sum(x => x.Price);
+    } }
+
+<header class="header">
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="header__top__right">
+                        @if (ViewBag.UserName != null)
+                        {
+            <div class="header__top__right__auth">
+                <h5>@ViewBag.UserName</h5>
+            </div>
+                            <div class="header__top__right__auth">
+                                <a href="/Account/Logout"><i class="fa fa-user"></i> Çıkış Yap</a>
+                            </div> }
+                        else
+                        {
+            <div class="header__top__right__auth">
+                <a href="/Account/Login"><i class="fa fa-user"></i> Giriş Yap</a>
+            </div>}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="header__logo">
+                    <a href="/Home/index"><img src="/Image/iconfinder_social-circle-google-plus_682223.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <nav class="header__menu">
+                    <ul>
+                        <li class="active"><a href="/Home/index">Anasayfa</a></li>
+                        <li><a href="#">Ürünler</a></li>
+                        <li>
+                            <a href="/Template/#">Sayfalar</a>
+                       
+                        </li>
+                       
+                        <li><a href="#">İletişim</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3">
+            
+            </div>
+        </div>
+        <div class="humberger__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<div class="span9" style="margin-top:auto">
+    <ul class="breadcrumb">
+ 
+    </ul>
+    <h3>  Alışveriş Sepeti  </h3>
+    <hr class="soft" />
+
+    @if (Model != null && Model.Count() > 0)
+    {
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Resim</th>
+            <th>Adı</th>
+            <th>Açıklama</th>
+            <th>Fiyat</th>
+            <th>İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+<tr>
+    <td> <img width="60" height="80" src="/Image/@item.ImageUrl" alt="" /></td>
+    <td>@item.Name</td>
+    <td>@item.Description</td>
+    <td>@item.Price (₺)</td>
+    <td><a href="/Cart/RemoveCart?Id=@item.Id" class="btn btn-danger">Sepetten Çıkart</a></td>
+</tr>}
+
+    </tbody>
+</table>
+
+                <a href="/Home/Product" class="btn btn-success"><i class="icon-arrow-left"></i> Alışverişe Devam Et </a>
+
+                                <button class="btn btn-info pull-right" disabled> Toplam Fiyat : @total <i class="icon-arrow-right"></i></button>
+
+                                                <a href="/Cart/Checkout" class="btn btn-success pull-right"> Alışverişi Tamamla <i class="icon-arrow-right"></i></a> }
+                                            else
+                                            {
+                                <div class="alert alert-error">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>Uyarı !</strong> Sepetinizde ürün bulunmamaktadır..
+                                </div>}
+</div>
+
