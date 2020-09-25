@@ -1,4 +1,5 @@
-﻿using E_TicaretProject.Entities;
+﻿
+using E_TicaretProject.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -8,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace E_TicaretProject.Configuration
 {
-    public class ProductConfiguration : BaseConfiguration<Product>
+    public class OrderConfiguration : BaseConfiguration<Order>
     {
-        public override void Configure(EntityTypeBuilder<Product> builder)
+        public override void Configure(EntityTypeBuilder<Order> builder)
         {
             base.Configure(builder);
 
-            builder.Metadata.FindNavigation(nameof(Product.OrderDetails)).SetPropertyAccessMode(PropertyAccessMode.Field);
-
+            builder.Metadata.FindNavigation(nameof(Order.OrderDetails)).SetPropertyAccessMode(PropertyAccessMode.Field);
         }
+
     }
 }

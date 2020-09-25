@@ -11,8 +11,8 @@ namespace E_TicaretProject.Entities
         public string Email { get; set; }
         public string Password { get; set; }
 
-        //Kullanıcının sepetindeki ürünlerin listesi
+        //Kullanıcının siparişleri
         //Navigation Property
-        public virtual List<UserCart> UserCarts { get; set; } = new List<UserCart>();
+        public virtual List<Order> Orders { get; set; } = new List<Order>();
     }
 }

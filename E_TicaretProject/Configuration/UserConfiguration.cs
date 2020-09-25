@@ -14,7 +14,7 @@ namespace E_TicaretProject.Configuration
         {
             base.Configure(builder);
 
-            builder.Metadata.FindNavigation(nameof(User.UserCarts)).SetPropertyAccessMode(PropertyAccessMode.Field);
+            builder.Metadata.FindNavigation(nameof(User.Orders)).SetPropertyAccessMode(PropertyAccessMode.Field);
 
 
         }

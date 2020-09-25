@@ -1,4 +1,6 @@
 ﻿using E_TicaretProject.Entities;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -21,6 +23,16 @@ namespace E_TicaretProject.DbContexts
             {
                 return;
             }
+
+
+            //User appUser = new User
+            //{
+            //    UserName = "emre bahar",
+            //    Email = "emrebahar@hotmail.com"
+            //};
+
+            //IdentityResult result = await UserManager.CreateAsync(appUser, "12345");
+
             var user = new User();
             user.UserName = "Emre BAHAR";
             user.Email = "emrebahar@hotmail.com";

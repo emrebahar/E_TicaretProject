@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Session;
 using E_TicaretProject.Interface;
 using E_TicaretProject.Repository;
+using Microsoft.AspNetCore.Identity;
+using E_TicaretProject.Entities;
 
 namespace E_TicaretProject
 {
@@ -45,15 +47,6 @@ namespace E_TicaretProject
             // Adds a default in-memory implementation of IDistributedCache.
             services.AddDistributedMemoryCache();
 
-            //services.AddSession(options =>
-            //{
-            //    // Set a short timeout for easy testing.
-            //    options.IdleTimeout = TimeSpan.FromSeconds(10);
-            //    options.Cookie.HttpOnly = true;
-            //});
-
-
-     
             services.AddScoped<ICartRepository, CartRepository>();
         }
 

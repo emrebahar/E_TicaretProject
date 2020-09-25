@@ -12,7 +12,7 @@ namespace E_TicaretProject.Entities
         public double Price { get; set; }
         public string ImageUrl { get; set; }
         public string Description { get; set; }
-        public virtual List<UserCart> CartList { get; set; } = new List<UserCart>();
+        public virtual List<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 
         public bool Equals([AllowNull] Product other)
         {

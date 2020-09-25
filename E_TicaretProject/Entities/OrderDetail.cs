@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace E_TicaretProject.Entities
 {
-    public class UserCart : BaseEntity
+    public class OrderDetail : BaseEntity
     {
-        public int UserId { get; set; }
-        public User User { get; set; }
         public int ProductId { get; set; }
         public Product Product { get; set; }
+        public int OrderId { get; set; }
+        public Order Order { get; set; }
     }
 }

@@ -13,6 +13,9 @@ namespace E_TicaretProject.Models
         {
             get { return _cartLines; }
         }
+
+        public IEnumerable<object> Cartlines { get; internal set; }
+
         public void AddProduct(Product product, int quantity)
         {
             var line = _cartLines.FirstOrDefault(i => i.Product.Id == product.Id);

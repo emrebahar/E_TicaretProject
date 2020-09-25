@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using static E_TicaretProject.Entities.Order;
 
 namespace E_TicaretProject.DbContexts
 {
@@ -18,7 +19,8 @@ namespace E_TicaretProject.DbContexts
 
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<UserCart> UserCarts { get; set; }
+        public DbSet<OrderDetail> OrderDetail { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
